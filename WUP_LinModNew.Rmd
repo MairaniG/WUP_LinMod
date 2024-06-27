@@ -83,9 +83,16 @@ The SIMS prediction for ARM =88 is 0.7063836, the predicting interval is (-1.73,
 
 ### Numerical results 
 
-
+```{r}
+cor(SIMS~GRIP,data=data)
+```
+The correlation 0.6398458 shows that there is a positive relationship. The grip strength increases. 
 ### Inferential  (Build model.2)
-  
+
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+```
 
 #### predict model.2 at target point
 
