@@ -113,18 +113,16 @@ The p-value is < 2.2e-16, the same as the arm strength. It is 0.0000000000000001
 newdata = data.frame(ARM=88, GRIP=94)
 predict(model.2,newdata,interval='pred')
 ```
-
-
-#### now add the model fit to our plot for model.2
-  
+The SIMS prediction for ARM = 88 is 0.5361543 , the predicting interval is (-3.11,2.04)  
 
 
 ## Model 3 SIM~ARM+GRIP
+```{r}
+model.3=lm(SIMS~ARM+GRIP,data=data)
+summary(model.3)
+```
 
-### Numerical results (cor)
 
-`
-  
 ### Inferential  (Build 2-dimentional model.3)
 
 #### predict model.3 at target point
