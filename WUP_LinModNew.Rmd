@@ -52,11 +52,29 @@ The correlation shows that a positive relationship exists between both variables
 
 ### Inferential  (Build model.1)
 
-#### Predict at target point
-
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
 
 #### scatterplot with model fit
-  
+
+```{r}
+plot(SIMS~ARM,data=data)
+abline(model.1,col='red')
+```
+
+The p-value is < 2.2e-16. In its scientific notation, this is 0.00000000000000016. It is really close to zero and smaller than 0.05.   
+
+#### Predict at target point
+
+```{r}
+newdata = data.frame(ARM = 88, GRIP=94)
+predict(model.1, newdata, interval='pred')
+```
+
+The SIMS prediction for ARM =88 is 0.7063836, the predicting interval is (-1.73, 3.14)
+
 
 ## Model 2 SIM~GRIP
 
