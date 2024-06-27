@@ -64,7 +64,7 @@ plot(SIMS~ARM,data=data)
 abline(model.1,col='red')
 ```
 
-The p-value is < 2.2e-16. In its scientific notation, this is 0.00000000000000016. It is really close to zero and smaller than 0.05.   
+The p-value is < 2.2e-16. In its scientific notation, this is 0.00000000000000016. It is really close to zero and smaller than 0.05. The model fit shows an upwards trend.   
 
 #### Predict at target point
 
@@ -106,9 +106,14 @@ plot(SIMS~GRIP,data=data)
 abline(model.2,col='red')
 ```
 
-The p-value is < 2.2e-16, the same as the arm strength. It is 0.00000000000000016 and smaller than 0.05.  
+The p-value is < 2.2e-16, the same as the arm strength. It is 0.00000000000000016 and smaller than 0.05. The model fit shows an upwards trend.   
 
 #### predict model.2 at target point
+```{r}
+newdata = data.frame(ARM=88, GRIP=94)
+predict(model.2,newdata,interval='pred')
+```
+
 
 #### now add the model fit to our plot for model.2
   
