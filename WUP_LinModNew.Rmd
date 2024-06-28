@@ -117,21 +117,54 @@ The SIMS prediction for ARM = 88 is 0.5361543 , the predicting interval is (-3.1
 
 
 ## Model 3 SIM~ARM+GRIP
+
+### numerical results 
+
+### numerical results (cor)
+```{r}
+df=data.frame(SIMS=data$SIMS,GRIP=data$GRIP,ARM=data$ARM)
+cor(df)
+```
+
+Correlation matrix shows that SIMS correlates with GRIP and ARM, also that GRIP and ARM also corrlate with each other.  
+
+### Inferential  (Build 2-dimentional model.3)
+
 ```{r}
 model.3=lm(SIMS~ARM+GRIP,data=data)
 summary(model.3)
 ```
 
+The p-value from the F-statistic is 0.00000000000000022 and it shows that the relationship between the sims score and arm and grip strengths is not coincidental. It is less than 0.05 and does fit the model.
 
-### Inferential  (Build 2-dimentional model.3)
+p-values from the model parameters: intercept is < 2e-16, coefficient of ARM is 1.50e-09 and coefficient of GRIP is 4.99e-06.  
 
 #### predict model.3 at target point
   
+```{r}
+newdata=data.frame(GRIP=94, ARM= 88)
+predSIMS= predict(model.3, newdata, interval= 'pred')
+print(predSIMS)
+```
+The predicted SIMS score for GRIP=94, ARM=88 is 0.150.The predicting interval is (-2.13,2.43) 
 
 ## Comparing nested models ANOVA Test
 
 ### Model.1 vs Model.3
+
+```{r}
+anova(model.1, model.3)
+```
+
+The anova shows the p-value is 4.994e-06 (0.000004994), it is less than 0.05, so we reject the null hypothesis and it is shown that there is a difference in the models.  
+
+Model 2 : SIMS~ARM+GRIP shows a smaller residual sum of squared errors, therefore it is a better fit than model 1:SIMS~ARM. The rss proves this as it is 188 in model 2 and 218 in model 1.  
+
 ### Model.2 vs Model.3
+
+```{r}
+anova(model.2, model.3)
+```
 
 ## Informally compare Model.1 with model.2
 
