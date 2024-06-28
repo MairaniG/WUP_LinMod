@@ -165,6 +165,8 @@ Model 2 : SIMS~ARM+GRIP shows a smaller residual sum of squared errors, therefor
 ```{r}
 anova(model.2, model.3)
 ```
+Model 2: SIMS~ARM+GRIP is better than Model 1: SIMS~ARM because the rss is lower (188) than Model 1s (243).   
+The p-value 1.495e-09 (0.000000001495) is smaller than 0.05, therefore the models are different.  
 
 ## Informally compare Model.1 with model.2
 
